@@ -49,7 +49,7 @@ int isVirusThere(unsigned char* text, virus* v, unsigned int size);
 int main(int argc, char **argv) {
   int index = 0;
   int virusesIndex = 0;
-  unsigned char * buffer = getFileData("signatures");
+  unsigned char * buffer = getFileData("signatures.txt");
   struct virus * viruses[10];
   link * virus_list = NULL;
   
@@ -69,12 +69,12 @@ int main(int argc, char **argv) {
   }
   
   /* loads the checked file data */
-  unsigned char * checkedFileBuffer = getFileData("infected");
+  unsigned char * checkedFileBuffer = getFileData("infected.txt");
   
   if(argc > 1 && strcmp(argv[1], "-f") == 0)
-    detect_virus_f(checkedFileBuffer, virus_list, getFileSize("infected"));
+    detect_virus_f(checkedFileBuffer, virus_list, getFileSize("infected.txt"));
   else
-    detect_virus(checkedFileBuffer, virus_list, getFileSize("infected"));
+    detect_virus(checkedFileBuffer, virus_list, getFileSize("infected.txt"));
   
   list_free(virus_list);
     
